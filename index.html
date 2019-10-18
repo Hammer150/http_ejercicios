@@ -1,82 +1,92 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf8">
-    <title>Calculadora Basica en Javascript</title>
-
-    <script type="text/javascript" src="script.js"></script>
-
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/xd.css">
+    <title>Test del curso</title>
+</head>
 <style>
-
-input[type=button], input[type="text"]{
-    width: 100%;
-    height: 100%;
-    font-size: 30px;
-}
-
-table, form{
-    width: 500px;
-    height: 400px;
-    margin: 0 auto;
-}
-
 </style>
 
-
-</head>
-
 <body>
-
-<form name="fo">
-
-    <h1>Calculadora Basica en Javascript</h1>
-
-    <table>
-        <tr>
-        <td colspan="5"><input type="text" name="valores" id="valores" onkeypress="return solonumeros(event)"></td>
+    <h1>Calculadora Basica</h1>
+    <h1>hola!!!</h1>
+<p>Una calculadora es un dispositivo que se utiliza para realizar cálculos aritméticos. Aunque las calculadoras modernas incorporan a menudo un ordenador de propósito general, se diseñan para realizar ciertas operaciones más que para ser flexibles.</p>
+<table  style="background: chocolate;" >
+     <tr>
+        <th colspan="4"><input id="lcd" type="text"></th>
     </tr>
-
-    <tr>
-
-        <td><input type="button" value="7"></td> 
-        <td><input type="button" value="8"></td>
-        <td><input type="button" value="9"></td>
-        <td><input type="button" value="+"></td>
-        <td><input type="button" value="-"></td>
-        
+    <tr style="background: darkblue;">
+        <th><button onclick="mostrar(7)">7</button></th>
+        <th><button onclick="mostrar(8)">8</button></th>
+        <th><button onclick="mostrar(9)">9</button></th>
+        <th><button onclick="obtenerOperador('suma')">+</button></th>
     </tr>
-    
-    <tr>
-
-        <td><input type="button" value="4"></td>
-        <td><input type="button" value="5"></td>
-        <td><input type="button" value="6"></td>
-        <td><input type="button" value="*"></td>
-        <td><input type="button" value="/"></td>
-    
+    <tr style="background: darkcyan;">
+        <th><button onclick="mostrar(4)">4</button></th>
+        <th><button onclick="mostrar(5)">5</button></th>
+        <th><button onclick="mostrar(6)">6</button></th>
+        <th><button onclick="obtenerOperador('resta')">-</button></th>
     </tr>
-
-    <tr>
-
-        <td><input type="button" value="1"></td>
-        <td><input type="button" value="2"></td>
-        <td><input type="button" value="3"></td>
-        <td><input type="button" value="<-"></td>
-        <td><input type="button" value="C"></td>
-        
+    <tr style="background: darkorchid;">
+        <th><button onclick="mostrar(1)">1</button></th>
+        <th><button onclick="mostrar(2)">2</button></th>
+        <th><button onclick="mostrar(3)">3</button></th>
+        <th><button onclick="obtenerOperador('multiplicacion')">*</button></th>
     </tr>
-    
-    <tr>
-
-        <td colspan="2"><input type="button" value="0"></td>
-        <td></td>
-        <td colspan="2"><input type="button" value="="></td>
-        
-                
+    <tr style="background: dimgray;">
+        <th><button onclick="borrarPantalla()">CE</button></th>
+        <th><button onclick="mostrar(0)">0</button></th>
+        <th><button onclick="calcular()">=</button></th>
+        <th><button onclick="obtenerOperador('division')">/</button></th>
     </tr>
-
-    </table>
-
-
-    </form>
-    </body>
-    </html>  
+</table>
+    <script>
+        var pantalla = '';
+        var resultado = 0;
+        var operador = '';
+        var numero1 = 0;
+        var numero2 = 0;
+        function mostrar(valor){
+            pantalla = pantalla + valor;
+            document.getElementById('lcd').value = pantalla;
+        }
+        function obtenerOperador(operaciones){
+            numero1 = document.getElementById('lcd').value;
+            document.getElementById('lcd').value;
+            operador = operaciones;
+            document.getElementById('lcd').value = '';
+            pantalla = '';
+        }
+        function calcular(){
+            numero2 = document.getElementById('lcd').value;
+            switch(operador){
+                case 'suma':
+                resultado = parseInt(numero1)+parseInt(numero2);
+                document.getElementById('lcd').value = resultado;
+                break;
+                case 'resta':
+                resultado = parseInt(numero1)-parseInt(numero2);
+                document.getElementById('lcd').value = resultado;
+                break;
+                case 'multiplicacion':
+                resultado = parseInt(numero1)*parseInt(numero2);
+                document.getElementById('lcd').value = resultado;
+                break;
+                case 'division':
+                resultado = parseInt(numero1)/parseInt(numero2);
+                document.getElementById('lcd').value = resultado;
+                break;
+            }
+        }
+        function borrarPantalla(){
+            document.getElementById('lcd').value = '';
+            pantalla = '';
+            resultado = 0;
+            operador = '';
+            numero1 = 0;
+            numero2 = 0;
+        }
+    </script>
+</body>
+</html>

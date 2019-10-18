@@ -1,0 +1,10 @@
+table{
+    width: 600px;
+    height: 40px;
+    border: 1px solid black;
+    float: right;
+}
+button{
+    width: 100%;
+    font-size: 150%;
+}
